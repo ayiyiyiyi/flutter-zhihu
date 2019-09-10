@@ -68,8 +68,8 @@ class _HomePageState extends State<HomePage> {
         body: TabBarView(
           children: [
             new Follow(),
-            new Hot(),
-            new Recommand()
+            new Recommand(),
+            new Hot()
           ],
         ),
       ),

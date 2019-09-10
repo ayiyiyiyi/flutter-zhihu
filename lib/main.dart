@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:my_zhihu_flutter/home/answerDetail.dart';
+import 'package:my_zhihu_flutter/home/person.dart';
+import 'package:my_zhihu_flutter/home/questionDetail.dart';
 import './index/index.dart';
 import 'config.dart';
 void main() => runApp(new MyApp());
@@ -7,7 +10,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
       title: '逼乎',
-      home: new Index()
+      initialRoute:"/",
+      routes: {
+        '/': (context) => Index(),
+        'answer_detail': (context) => AnswerDetailPage(),
+        'person_detail': (context) => PersonPage(),
+        'question_detail': (context) => QuestionDetailPage()
+      },
+      theme: new ThemeData.dark(),
     );
   }
 }
