@@ -1,4 +1,4 @@
-package com.example.my_flutter;
+package com.example.my_zhihu_flutter;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;

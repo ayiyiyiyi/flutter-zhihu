@@ -28,8 +28,7 @@ class _IndexState extends State<Index>{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return new MaterialApp(
-      home: Scaffold(
+    return new  Scaffold(
         body: _pages[_currentIndex],
         bottomNavigationBar: new BottomNavigationBar(
           fixedColor: GlobalConfig.globalColor,
@@ -73,8 +72,6 @@ class _IndexState extends State<Index>{
             });
           },
         ),
-      ),
-      theme: new ThemeData.dark(),
     );
   }
 

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:my_zhihu_flutter/home/mockData.dart';
+import 'package:my_zhihu_flutter/home/cmpt/contetCard.dart';
 
 class Recommand extends StatefulWidget {
   @override
@@ -8,10 +10,15 @@ class Recommand extends StatefulWidget {
 class _RecommandState extends State<Recommand> {
   @override
   Widget build(BuildContext context) {
+    List contentList = articleList.map((e) => contentCard(e, context, showOrigin: false)).toList();
+
     // TODO: implement build
-    return new Container(
-      alignment: Alignment.center,
-      child: new Text('recommand'),
+    return new SingleChildScrollView(
+      child: new Container(
+        child: new Column(
+          children: contentList,
+        ),
+      ),
     );
   }
 
