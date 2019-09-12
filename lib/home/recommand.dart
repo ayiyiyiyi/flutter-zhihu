@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_zhihu_flutter/home/mockData.dart';
-import 'package:my_zhihu_flutter/home/cmpt/contetCard.dart';
+import 'package:my_zhihu_flutter/mockData.dart';
+import 'package:my_zhihu_flutter/components/contetCard.dart';
 
 class Recommand extends StatefulWidget {
   @override
