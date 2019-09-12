@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'mockData.dart';
-import 'cmpt/contetCard.dart';
+import '../mockData.dart';
+import '../components/contetCard.dart';
 class Follow extends StatefulWidget {
   @override
   _FollowState createState() => _FollowState();
-  
 }
 class _FollowState extends State<Follow> {
   @override

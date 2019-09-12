@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import '../config.dart';
-import '../home/home.dart';
-import '../think/think.dart';
-import '../market/market.dart';
-import '../notification/notification.dart';
-import '../my/mypage.dart';
+import 'config.dart';
+import 'home/home.dart';
+import 'think/think.dart';
+import 'market/market.dart';
+import 'notification/notification.dart';
+import 'my/mypage.dart';
 
 class Index extends StatefulWidget {
   @override

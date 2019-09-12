@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_zhihu_flutter/home/answerDetail.dart';
 import 'package:my_zhihu_flutter/home/person.dart';
 import 'package:my_zhihu_flutter/home/questionDetail.dart';
-import './index/index.dart';
+import 'index.dart';
 import 'config.dart';
 void main() => runApp(new MyApp());
 class MyApp extends StatelessWidget {

@@ -8,8 +8,8 @@ class _QuestionDetailPageState extends State<QuestionDetailPage> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Center(
-      child: new Text('question')
+    return Container(
+      child: new Text('questionPage'),
     );
   }
   

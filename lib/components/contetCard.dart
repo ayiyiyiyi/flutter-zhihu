@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import '../mockData.dart';
-import '../../config.dart';
-import '../answerDetail.dart';
-import '../questionDetail.dart';
-import '../person.dart';
+import '../config.dart';
 Widget synopsisCard(Article article, context) {
   Widget synopsis;
   if (article.imgUrl == null) {
