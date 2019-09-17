@@ -61,7 +61,7 @@ Widget questionCard(Question question, context) {
   }
   cardWidget = new GestureDetector(
     onTap: () {
-      Navigator.pushNamed(context, 'question_detail');
+      Navigator.pushNamed(context, 'question_detail', arguments: {'title': question.title});
     },
     child: new Container(
       padding: EdgeInsets.only(top: 8.0, left: 0, right: 10.0,bottom: 8),

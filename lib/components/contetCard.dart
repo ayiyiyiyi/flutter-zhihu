@@ -45,7 +45,7 @@ Widget synopsisCard(Article article, context) {
   }
   return new GestureDetector(
     onTap: () {
-     Navigator.pushNamed(context, 'answer_detail');
+     Navigator.pushNamed(context, 'answer_detail',arguments: {'title':article.title});
     },
     child:new Container(
       padding: EdgeInsets.only(top:2.0, left: 12.0, right: 12.0,bottom: 0),
@@ -90,7 +90,7 @@ Widget contentCard(Article article, context, {showOrigin}) {
   Widget titleWidget(Article article, context) {
     return new GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, 'question_detail');
+        Navigator.pushNamed(context, 'question_detail', arguments: {'title': article.title});
       },
       child: new Container(
         padding: EdgeInsets.only(top: 4.0, left: 12.0, right: 12.0,bottom: 0),
@@ -108,7 +108,7 @@ Widget contentCard(Article article, context, {showOrigin}) {
   Widget personWidget(Article article, context) {
     return new GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, 'person_detail');
+        Navigator.pushNamed(context, 'person_detail',arguments: {'name':article.user});
       },
       child: new Container(
         margin:  EdgeInsets.only(top: 12.0, left: 12.0, right: 12.0,bottom: 0),

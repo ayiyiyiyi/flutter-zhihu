@@ -17,7 +17,7 @@ class _HomePageState extends State<HomePage> {
             child: new FlatButton.icon(
               color: Colors.grey[800],
               onPressed: () {
-
+                Navigator.pushNamed(context, '/search',arguments: {'id': 1111});
               },
               icon: new Icon(
                 Icons.search,
