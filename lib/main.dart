@@ -22,7 +22,6 @@ class MyApp extends StatelessWidget {
       onGenerateRoute: (RouteSettings settings) {
         final String name = settings.name;
         final Function pageContentBuilder = this._routes[name];
-        print(pageContentBuilder);
 
         if (pageContentBuilder != null) {
           return MaterialPageRoute(

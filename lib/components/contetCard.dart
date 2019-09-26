@@ -45,11 +45,7 @@ Widget synopsisCard(Article article, context) {
   }
   return new GestureDetector(
     onTap: () {
-<<<<<<< HEAD
      Navigator.pushNamed(context, 'answer_detail',arguments: {'title':article.title});
-=======
-     Navigator.pushNamed(context, 'answer_detail');
->>>>>>> 9a6a40c4484d823abee7a6efecb6d09e90341264
     },
     child:new Container(
       padding: EdgeInsets.only(top:2.0, left: 12.0, right: 12.0,bottom: 0),
@@ -94,11 +90,7 @@ Widget contentCard(Article article, context, {showOrigin}) {
   Widget titleWidget(Article article, context) {
     return new GestureDetector(
       onTap: () {
-<<<<<<< HEAD
         Navigator.pushNamed(context, 'question_detail', arguments: {'title': article.title});
-=======
-        Navigator.pushNamed(context, 'question_detail');
->>>>>>> 9a6a40c4484d823abee7a6efecb6d09e90341264
       },
       child: new Container(
         padding: EdgeInsets.only(top: 4.0, left: 12.0, right: 12.0,bottom: 0),

@@ -1,4 +1,6 @@
 
+import 'package:flutter/foundation.dart';
+
 class Article {
   String headUrl;
   String user;
@@ -93,3 +95,32 @@ List<Question> questionList = [
   new Question("6", "如何编译 Linux 内核？", 3110000, "https://pic3.zhimg.com/80/v2-1ea1b0cf80c85b88893b2b97a94d7e71_hd.jpg", mark: "内核？呵呵"),
 
 ];
+
+List questionTags = ['三体', '科技', '脑洞打开','带有假设的问题'];
+
+class QuestionTag {
+  String name;
+  int id;
+  QuestionTag({this.id, this.name});
+  factory QuestionTag.formJson(Map<String,dynamic > json) {
+    return QuestionTag(id: json['id'],name: json['name']);
+  }
+}
+
+class  QuestionDetail {
+  String type;
+  int id;
+  String title;
+  int answerNumer;
+  int followNumber;
+  int commentNumber;
+  String description;
+  List<QuestionTag> tagList;
+  QuestionDetail({this.type,this.id,this.title,this.answerNumer,this.followNumber,this.commentNumber,this.description,this.tagList});
+  factory QuestionDetail.formatJson(Map<String, dynamic> json) {
+    var tags = json['tags'] as List;
+    List<QuestionTag> list = tags.map((i) => QuestionTag.formJson(i)).toList();
+    print(list);
+    return QuestionDetail(type:json['type'],id: json['id'],answerNumer: json['answerNumer'],title: json['title'],followNumber: json['followNumber'],commentNumber: json['commentNumber'],description: json['description'],tagList: list);
+  }
+}
