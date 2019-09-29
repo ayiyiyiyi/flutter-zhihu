@@ -121,6 +121,6 @@ class  QuestionDetail {
     var tags = json['tags'] as List;
     List<QuestionTag> list = tags.map((i) => QuestionTag.formJson(i)).toList();
     print(list);
-    return QuestionDetail(type:json['type'],id: json['id'],answerNumer: json['answerNumer'],title: json['title'],followNumber: json['followNumber'],commentNumber: json['commentNumber'],description: json['description'],tagList: list);
+    return QuestionDetail(type:json['type'],id: json['id'],answerNumer: json['answerNumer'],title: json['title'],followNumber: json['follow_number'],commentNumber: json['comment_number'],description: json['description'],tagList: list);
   }
 }

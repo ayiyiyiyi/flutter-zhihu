@@ -16,7 +16,8 @@ class QuestionDetailPage extends StatefulWidget {
 
 class _QuestionDetailPageState extends State<QuestionDetailPage> {
   QuestionDetail detail;
-  bool desClip;
+  bool desExpand = false;
+  double spacing = 10;
   @override
   void initState() {
     // TODO: implement initState
@@ -35,14 +36,35 @@ class _QuestionDetailPageState extends State<QuestionDetailPage> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-
+    
+    void showAlldescription() {
+      setState(() {
+        desExpand = true;
+      });
+    }
+    //判断问题描述是否需要折叠
+    bool isClip(String text) {
+      double desWidth = MediaQuery.of(context).size.width - (spacing + 4) * 2;
+      bool desNeedClip;
+      TextPainter _textpainer = TextPainter(
+        maxLines: 4,
+        text: TextSpan(text:text),
+        textDirection: TextDirection.ltr,
+      )..layout(maxWidth: desWidth, minWidth: desWidth);
+      if (_textpainer.didExceedMaxLines) {
+        desNeedClip = true;
+      } else {
+        desNeedClip = false;
+      }
+      return desNeedClip;
+    }
     Widget loading() {
       return new Center(child: new CircularProgressIndicator());
     }
     Widget singleTag(tag) {
       return Container(
         margin: EdgeInsets.all(4),
-        padding: EdgeInsets.only(bottom: 4, left: 10, right: 10, top: 4),
+        padding: EdgeInsets.only(bottom: 4, left: spacing, right: spacing, top: 4),
         child: Text(
           tag.name,
           style: TextStyle(fontSize: 12, color: GlobalConfig.fontColor),
@@ -66,33 +88,108 @@ class _QuestionDetailPageState extends State<QuestionDetailPage> {
       ),
     );
     Widget description() {
-
-    }
-    bool isClip(String text) {
-      TextPainter _textpainer = TextPainter(
-        maxLines: 4,
-        text: TextSpan(text:text),
-        textDirection: TextDirection.ltr,
-      )..layout(maxWidth: MediaQuery.of(context).size.width, minWidth: MediaQuery.of(context).size.width);
-      
-      print(_textpainer.didExceedMaxLines);
-      if (_textpainer.didExceedMaxLines) {
-        setState(() {
-          desClip = true;
-        });
+      if (detail != null && detail.description != null) {
+        TextStyle desStyle = TextStyle(color: GlobalConfig.fontColor,fontSize: 14);
+        if (isClip(detail.description)) {
+          if (desExpand) {
+             return Container(
+              child:  Text(
+                detail.description,
+                style: desStyle
+              ),
+            );
+          } else{
+            return Container(
+              child:  Stack(
+                alignment: Alignment.center,
+                children: <Widget>[
+                  Container(
+                    child: Text(
+                      detail.description,
+                      maxLines: 4,
+                      style: desStyle,
+                      overflow: TextOverflow.ellipsis,
+                    )
+                  ),
+                  Positioned(
+                    child: GestureDetector(
+                      onTap: (){ 
+                        showAlldescription();
+                      },
+                      child: Text(
+                        '查看全部',
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.blueGrey,
+                          background: new Paint()..color = GlobalConfig.cardBackgroundColor
+                        ),
+                      ),
+                    ),
+                    right: 4,
+                    bottom: 0,
+                  )
+                ],
+              ),
+            );
+          }
+        } else {
+          return Container(
+            child: Text(
+              detail.description,
+              maxLines: 4,
+              overflow: TextOverflow.clip,
+              style: desStyle
+            ),
+          );
+        }
       } else {
-        setState(() {
-          desClip = false;
-        });
+        return null;
       }
     }
-    if (detail.description != null) {
-      isClip(detail.description);
+    Widget buttonWidget() {
+      TextStyle buttonStyle = TextStyle(color: GlobalConfig.fontColor,fontSize: 14);
+      return Container(
+        padding: EdgeInsets.only(top: 4),
+        decoration: BoxDecoration(
+          border: Border(top: BorderSide(width: 1.0, color: Colors.grey[800]),)
+        ),
+        child: Row(
+          children: <Widget>[
+            Expanded(
+              flex: 1,
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border(right: BorderSide(width: 1.0, color: Colors.grey[800]),)
+                ),
+                child: FlatButton.icon(
+                  onPressed: () {},
+                  icon: Icon(Icons.person_add,color: GlobalConfig.fontColor,size: 16),
+                  label: Text('邀请回答', style: buttonStyle,),
+                ),
+              ),
+            ),
+            Expanded(
+              flex: 1,
+              child: Container(
+                child: FlatButton.icon(
+                  onPressed: () {},
+                  icon: Icon(Icons.add,color: GlobalConfig.fontColor,size: 16),
+                  label: Text('写答案', style: buttonStyle,),
+                ),
+              ),
+            )
+          ],
+        ),
+      );
     }
     Widget questionDetailBody() {
+      int followNumber = detail != null && detail.followNumber != null ? detail.followNumber : 0;
+      int commentNumber = detail != null && detail.commentNumber != null ? detail.commentNumber : 0;
+
       return new SingleChildScrollView(
         child: Container(
-          margin: EdgeInsets.only(bottom: 6, left: 10, right: 10, top: 4),
+          color: GlobalConfig.cardBackgroundColor,
+          padding: EdgeInsets.only(bottom: 0, left: spacing, right: spacing, top: 4),
           child: new Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -105,14 +202,34 @@ class _QuestionDetailPageState extends State<QuestionDetailPage> {
                 margin: EdgeInsets.only(right: 4, left: 4),
                 padding: EdgeInsets.only(bottom: 6),
               ),
+              description(),
               Container(
-                margin: EdgeInsets.only(right: 4, left: 4),
-                child: Text(detail.description,
-                  style: TextStyle(color: GlobalConfig.fontColor,fontSize: 14),
-                  maxLines: 4,
-                  overflow: TextOverflow.clip,
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      flex: 1,
+                      child: Container(
+                        child: Text(
+                          followNumber.toString() + '个关注   ' + commentNumber.toString() + '个回答',
+                          style: TextStyle(fontSize: 12,color: GlobalConfig.fontColor),),
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(top:9, bottom: 9),
+                      width: 76,
+                      height: 30,
+                      color: Colors.blueGrey[600],
+                      child: FlatButton.icon(
+                        onPressed: () {},
+                        icon: Icon(Icons.add,size: 12,),
+                        label: Text('关注'),
+                      ),
+                    )
+                  ],
                 ),
-              )
+              ),
+              buttonWidget(),
+              
             ],
           ),
         )
