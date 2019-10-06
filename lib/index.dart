@@ -31,8 +31,8 @@ class _IndexState extends State<Index>{
     return new  Scaffold(
         body: _pages[_currentIndex],
         bottomNavigationBar: new BottomNavigationBar(
-          fixedColor: GlobalConfig.globalColor,
           type: BottomNavigationBarType.fixed,
+          fixedColor:GlobalConfig.globalColor,
           items: [
             new BottomNavigationBarItem(
               icon: new Icon(

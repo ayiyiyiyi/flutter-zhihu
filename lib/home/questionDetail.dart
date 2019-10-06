@@ -67,7 +67,7 @@ class _QuestionDetailPageState extends State<QuestionDetailPage> {
         padding: EdgeInsets.only(bottom: 4, left: spacing, right: spacing, top: 4),
         child: Text(
           tag.name,
-          style: TextStyle(fontSize: 12, color: GlobalConfig.fontColor),
+          style: TextStyle(fontSize: 12),
         ),
         decoration: BoxDecoration(
           color: Colors.black26,
@@ -89,7 +89,7 @@ class _QuestionDetailPageState extends State<QuestionDetailPage> {
     );
     Widget description() {
       if (detail != null && detail.description != null) {
-        TextStyle desStyle = TextStyle(color: GlobalConfig.fontColor,fontSize: 14);
+        TextStyle desStyle = TextStyle(fontSize: 14);
         if (isClip(detail.description)) {
           if (desExpand) {
              return Container(
@@ -121,7 +121,6 @@ class _QuestionDetailPageState extends State<QuestionDetailPage> {
                         style: TextStyle(
                           fontSize: 14,
                           color: Colors.blueGrey,
-                          background: new Paint()..color = GlobalConfig.cardBackgroundColor
                         ),
                       ),
                     ),
@@ -147,7 +146,7 @@ class _QuestionDetailPageState extends State<QuestionDetailPage> {
       }
     }
     Widget buttonWidget() {
-      TextStyle buttonStyle = TextStyle(color: GlobalConfig.fontColor,fontSize: 14);
+      TextStyle buttonStyle = TextStyle(fontSize: 14);
       return Container(
         padding: EdgeInsets.only(top: 4),
         decoration: BoxDecoration(
@@ -163,7 +162,7 @@ class _QuestionDetailPageState extends State<QuestionDetailPage> {
                 ),
                 child: FlatButton.icon(
                   onPressed: () {},
-                  icon: Icon(Icons.person_add,color: GlobalConfig.fontColor,size: 16),
+                  icon: Icon(Icons.person_add,size: 16),
                   label: Text('邀请回答', style: buttonStyle,),
                 ),
               ),
@@ -173,7 +172,7 @@ class _QuestionDetailPageState extends State<QuestionDetailPage> {
               child: Container(
                 child: FlatButton.icon(
                   onPressed: () {},
-                  icon: Icon(Icons.add,color: GlobalConfig.fontColor,size: 16),
+                  icon: Icon(Icons.add,size: 16),
                   label: Text('写答案', style: buttonStyle,),
                 ),
               ),
@@ -188,7 +187,6 @@ class _QuestionDetailPageState extends State<QuestionDetailPage> {
 
       return new SingleChildScrollView(
         child: Container(
-          color: GlobalConfig.cardBackgroundColor,
           padding: EdgeInsets.only(bottom: 0, left: spacing, right: spacing, top: 4),
           child: new Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -197,7 +195,7 @@ class _QuestionDetailPageState extends State<QuestionDetailPage> {
               Container(
                 child: Text(
                   detail.title,
-                  style: TextStyle(color: GlobalConfig.fontColor, fontSize: 18,fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),
                 ),
                 margin: EdgeInsets.only(right: 4, left: 4),
                 padding: EdgeInsets.only(bottom: 6),
@@ -211,7 +209,7 @@ class _QuestionDetailPageState extends State<QuestionDetailPage> {
                       child: Container(
                         child: Text(
                           followNumber.toString() + '个关注   ' + commentNumber.toString() + '个回答',
-                          style: TextStyle(fontSize: 12,color: GlobalConfig.fontColor),),
+                          style: TextStyle(fontSize: 12),),
                       ),
                     ),
                     Container(
@@ -239,7 +237,7 @@ class _QuestionDetailPageState extends State<QuestionDetailPage> {
       appBar: AppBar(
         title: Text(
           detail != null && detail.title != null ? detail.title : '问题',
-          style: TextStyle(color: GlobalConfig.fontColor, fontSize: 14),
+          style: TextStyle(fontSize: 14),
         ),
       ),
       body: detail != null && detail.title != null

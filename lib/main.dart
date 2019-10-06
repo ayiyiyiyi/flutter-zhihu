@@ -7,7 +7,7 @@ import 'package:my_zhihu_flutter/home/questionDetail.dart';
 import 'package:my_zhihu_flutter/home/search.dart';
 import 'state/index.dart';
 import 'index.dart';
-import 'config.dart';
+
 void main() => runApp(new MyApp());
 class MyApp extends StatelessWidget {
   final Map<String, Function> _routes = {

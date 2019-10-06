@@ -8,7 +8,7 @@ Widget synopsisCard(Article article, context) {
       article.synopsis,
       overflow: TextOverflow.ellipsis,
       maxLines: 3,
-      style: new TextStyle(height: 1.4, color: GlobalConfig.fontColor),
+      style: new TextStyle(height: 1.4,),
     );
   } else {
     synopsis = new Row(
@@ -21,7 +21,7 @@ Widget synopsisCard(Article article, context) {
               article.synopsis,
               overflow: TextOverflow.ellipsis,
               maxLines: 3,
-              style: new TextStyle(height: 1.4,color: GlobalConfig.fontColor),
+              style: new TextStyle(height: 1.4),
             ),
           ),
         ),
@@ -60,12 +60,12 @@ Widget synopsisCard(Article article, context) {
                 new Expanded(
                   child: new Text(
                     article.agreeNum.toString() + ' 赞同 · ' + article.commentNum.toString() + ' 评论',
-                    style: TextStyle(color: GlobalConfig.fontColor,fontWeight: FontWeight.bold,fontSize: 12),
+                    style: TextStyle(fontWeight: FontWeight.bold,fontSize: 12),
                     )
                 ),
                 new PopupMenuButton(
                   padding: const EdgeInsets.all(0),
-                  icon: new Icon(Icons.more_horiz,color: GlobalConfig.fontColor),
+                  icon: new Icon(Icons.more_horiz),
                   itemBuilder:(BuildContext context) => <PopupMenuItem<String>>[
                     new PopupMenuItem(
                       value: '0',
@@ -99,7 +99,7 @@ Widget contentCard(Article article, context, {showOrigin}) {
           overflow: TextOverflow.ellipsis,
           maxLines: 2,
           textAlign: TextAlign.left,
-          style: TextStyle(fontWeight: FontWeight.bold,color: GlobalConfig.fontColor,fontSize: 15.0),
+          style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15.0),
         ),
         alignment: Alignment.centerLeft
       ),
@@ -123,7 +123,7 @@ Widget contentCard(Article article, context, {showOrigin}) {
             ),
             new Text(
               article.user + article.action + ' · ' + article.time,
-              style: TextStyle(color: GlobalConfig.fontColor, fontSize: 12),
+              style: TextStyle(fontSize: 12),
             )
           ],
         ),
@@ -144,7 +144,6 @@ Widget contentCard(Article article, context, {showOrigin}) {
     ];
   }
   return new Container(
-    color: GlobalConfig.cardBackgroundColor,
     margin: EdgeInsets.only(bottom: 5.0),
     child: new Column(
       children: contentCardCmpList

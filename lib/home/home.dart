@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../config.dart';
 import 'hot.dart';
 import 'follow.dart';
 import 'recommand.dart';
@@ -15,18 +14,15 @@ class _HomePageState extends State<HomePage> {
         children: <Widget>[
           new Expanded(
             child: new FlatButton.icon(
-              color: Colors.grey[800],
               onPressed: () {
                 Navigator.pushNamed(context, '/search',arguments: {'id': 1111});
               },
               icon: new Icon(
                 Icons.search,
-                color: GlobalConfig.fontColor,
                 size: 14.0
               ),
               label: new Text(
                 "我是一个 · 搜索框",
-                style: new TextStyle(color: GlobalConfig.fontColor),
               ),
             ),
           ),
@@ -38,11 +34,9 @@ class _HomePageState extends State<HomePage> {
               icon: Icon(
                 Icons.border_color,
                 size: 14,
-                color: GlobalConfig.globalColor,
               ),
               label: new Text(
                 "提问",
-                style: new TextStyle(color: GlobalConfig.globalColor),
               ),
             ),
           )
@@ -60,7 +54,6 @@ class _HomePageState extends State<HomePage> {
           title: searchBar(),
           bottom: TabBar(
             labelColor: Colors.blue,
-            unselectedLabelColor: GlobalConfig.dark == true ? Colors.white : Colors.black26,
             indicatorColor: Colors.blue,
             tabs: _tabs.map((e) => new Tab(text: e)).toList(),
           ),

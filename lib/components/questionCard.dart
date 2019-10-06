@@ -25,14 +25,13 @@ Widget questionCard(Question question, context) {
           child: Text(
             question.title,
             textAlign: TextAlign.left,
-            style: TextStyle(color: GlobalConfig.fontColor, fontSize: 16, fontWeight: FontWeight.bold),
+            style: TextStyle( fontSize: 16, fontWeight: FontWeight.bold),
           ),
           alignment: Alignment.centerLeft),
         Container(
           child: Text(
             question.hotNum.toString() + '热度',
             textAlign: TextAlign.left,
-            style: TextStyle(color: GlobalConfig.fontColor),
           ),
           alignment: Alignment.centerLeft
         ),
@@ -66,7 +65,6 @@ Widget questionCard(Question question, context) {
     child: new Container(
       padding: EdgeInsets.only(top: 8.0, left: 0, right: 10.0,bottom: 8),
       margin: EdgeInsets.only(bottom: 1),
-      color: GlobalConfig.cardBackgroundColor,
       child: new Row(
         children: cardChildren,
       ),
